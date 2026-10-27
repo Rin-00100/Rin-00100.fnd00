@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./images/1_spades.png">
+
+  <title>Blackjack</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id = "home"> 
+    <img src="images/home.png" class="start-image">
+    
+    <button id="startButton" type="button">
+      GAME START
+    </button>
+
+  </div>
+  
+  <!-- <div>
+    <h1 class="title">Blackjack</h1>
+  </div> -->
+  
+  <div class="game-table">
+
+    <!-- ディーラーエリア -->
+     <!-- 中央寄せのためにflex型の箱を外に作る -->
+    <div id = "dealer-area">
+      <div class="dealer-area">
+
+        <h2>Dealer</h2>
+
+        <!-- JavaScriptでカード画像を追加 -->
+        <div id="Dealer-hand" class="hand"></div>
+
+        <p>
+          Score: <span id="Dealer-score">0</span>
+        </p>
+
+      </div>
+    </div>
+
+   
+    <!-- プレイヤーエリア -->
+    <!--
+      jsファイルのcreatePlayerElements(players)で
+      プレイヤー人数に応じて自動生成(add)
+    -->
+    <div id="players-area"></div>
+
+    <!-- ベット入力欄 -->
+    <!-- フェーズごとに表示を切り替える(add) -->
+    <section id="bet-area" class="control-area">
+
+      <h3>Bet</h3>
+
+      <input id="betAmount" type="number" min="100" step="100" placeholder="ベット金額（100単位）">
+      <button id="betButton" type="button"> Bet </button>
+
+      <h3>Cashing</h3>
+
+      <input id="cashingAmount" type="number" min="1", max="4000" step="1" placeholder="キャッシング金額(合計最大4000)">
+      <button id="cashingButton" type="button"> Cashing </button>
+
+    </section>
+
+
+    <!-- プレイヤーのターンの行動エリア -->
+    <!-- フェーズごとに表示を切り替える(add) -->
+    <section id="action-area" class="control-area">
+
+      <h3>Action</h3>
+
+      <div class="buttons">
+
+        <button id="hit-button" type="button">
+          Hit
+        </button>
+
+        <button id="stand-button" type="button">
+          Stand
+        </button>
+
+        <button id="double-button" type="button">
+          Double
+        </button>
+
+        <button id="surrender-button" type="button">
+          Surrender
+        </button>
+      </div>
+    </section>
+
+    <!-- ラウンド終了時のエリア -->
+    <!-- フェーズごとに表示を切り替える(add) -->
+    <section id="round-finished-area" class="control-area">
+
+      <button id="next-round-button" type="button">
+        Next Round
+      </button>
+
+    </section>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+
+</body>
+
+</html>
