@@ -716,6 +716,7 @@ betButton.addEventListener("click", () => {
   }
 
   document.getElementById("betAmount").value=""; //入力欄の中身を空にする
+  document.getElementById("cashingAmount").value=""; //入力欄の中身を空にする
 
   renderGame();
 
@@ -747,7 +748,8 @@ nextRoundButton.addEventListener("click", () => {
 
   gamePhase = "betting"; // 次のラウンドはベットフェイズから開始(add)
 
-  document.getElementById("betAmount").value = "";
+  document.getElementById("betAmount").value=""; //入力欄の中身を空にする
+  document.getElementById("cashingAmount").value=""; //入力欄の中身を空にする
 
   renderGame();
 });
@@ -774,6 +776,9 @@ cashingButton.addEventListener("click", () => {
     window.alert("キャッシング上限です");
     return;
   }
+
+  document.getElementById("betAmount").value=""; //入力欄の中身を空にする
+  document.getElementById("cashingAmount").value=""; //入力欄の中身を空にする
 
   renderGame();
 });
