@@ -1,0 +1,338 @@
+/* =========================
+   全体
+========================= */
+
+* {
+  /* 親要素に大きさを合わせる */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* 画面いっぱいに表示 */
+  min-height: 100vh;
+
+  font-family: "Arial", 'メイリオ';
+
+  background-color: #0b5d3b;
+  color: white;
+}
+
+#home{
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  /* 上下ともに画面いっぱいに */
+  width: 100vw;
+  height: 100vh;
+
+  /* z軸上で上に持ってくる */
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-image{
+  /* 位置を固定 */
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  /* アスペクト比を維持しながら最大化 */
+  object-fit: cover;
+}
+
+#startButton{
+  /* 本来の位置から相対的に配置できる */
+  position: relative;
+
+  /* 画像よりz軸で上に持ってくる */
+  z-index: 101;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  /* 位置を画面比に合わせてずらす */
+  transform: translateY(30vh);
+}
+
+/* タイトル */
+.title{
+  text-align: center;  
+}
+
+/* =========================
+   ゲームテーブル（実質全体）
+========================= */
+
+.game-table {
+  /* インラインとブロック両方の特性を持つ */
+  display: inline-block;
+  border: 5px solid goldenrod;
+  /* 丸みを持たせる */
+  border-radius: 20px;
+  /* 画面いっぱいに使う */
+  width: 100%;
+  height: 70%;
+  padding: 10px;
+  margin: 0 auto; /* 中央寄せの定番テクニック */
+
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+/* =========================
+   ディーラー
+========================= */
+/* 中身を中央寄せにするために外側に箱を作る */
+#dealer-area{
+  display: flex;
+  width: 100%;
+  /* 中身を中央寄せ */
+  justify-content: center;
+}
+
+.dealer-area {
+  min-width: 250px;
+  width: 80%;
+  padding: 15px;
+  margin-bottom: 30px;
+
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+
+  /* エリアの背景を薄い黒にする */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dealer-area h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* =========================
+   プレイヤー
+========================= */
+/* プレイヤー全体のエリア */
+#players-area {
+  display: flex;
+  width: auto;
+  /* 中身を中央寄せ */
+  justify-content: center;
+
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* プレイヤーごとのエリア */
+.player-area {
+  min-width: 250px;
+  padding: 15px;
+
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+
+  /* エリアの背景を薄い黒にする */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.player-area h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+
+/* =========================
+   カード
+========================= */
+
+/* カードを並べるエリア */
+.hand {
+  /* 横並び */
+  display: flex;
+  /* 中央寄せ */
+  justify-content: center;
+  /* 中央をそろえて配置 */
+  align-items: center;
+
+  min-height: 160px;
+  padding: 20px;
+}
+
+/* カード画像（元画像1500×2100） */
+.card {
+  width: 100px;
+  height: 140px;
+
+  /* 少し立体感を出す薄い黒 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  /* カードを少し重ねるためにカードを少し左にずらす */
+  margin-left: -20px;
+
+  /* 動きを滑らかにする（ホバー用） */
+  transition: transform 0.2s;
+}
+
+/* 最初のカードだけ重ねない */
+.card:first-child {
+  margin-left: 0;
+}
+
+/* マウスを乗せたカードを少し上げる */
+/* マウスのように hover できる端末でだけ持ち上げる */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+  }
+}
+
+/* =========================
+   操作エリア
+========================= */
+
+.control-area {
+  margin-top: 20px;
+}
+
+.control-area h3 {
+  margin-bottom: 12px;
+}
+
+
+/* =========================
+   BETエリア
+========================= */
+
+#bet-area {
+  text-align: center;
+}
+
+/* 数値入力欄 */
+#betAmount {
+  width: 280px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 16px;
+}
+
+/* 数値入力欄 */
+#cashingAmount {
+  width: 280px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 16px;
+}
+
+/* =========================
+   ボタン
+========================= */
+
+button {
+  padding: 10px 18px;
+
+  margin: 5px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  /* カーソルあてると指の形になるクリック可能を可視化 */
+  cursor: pointer;
+
+  background-color: white;
+  color: black;
+  
+  /* カーソルあてたときの反応を緩くする */
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
+}
+
+/* ボタンホバー時の動き */
+button:hover {
+  transform: translateY(-2px);
+  background-color: #eeeeee;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Player操作ボタン */
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 5px;
+}
+
+/* =========================
+   ラウンド終了
+========================= */
+
+#round-finished-area {
+  margin-top: 25px;
+}
+
+#next-round-button {
+  padding: 12px 25px;
+
+  background-color: yellow;
+  color: black;
+}
+
+
+/* 画面サイズが一定値(600px)を下回ったら配置を変更する */
+@media (max-width: 600px) {
+  #players-area {
+    gap: 15px;
+  }
+
+  .player-area {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card {
+    width: 70px;
+    margin-left: -15px;
+  }
+
+  .hand {
+    min-height: 130px;
+    padding: 15px;
+  }
+}
+
+
+/* 表示・非表示 */
+.hidden {
+  /* これだと消えてその分詰めるらしい ->　今回は詰めてほしいのでこっち */
+  display: none; 
+  /* これだと見えないだけらしい */
+  /* visibility: hidden;  */
+}
+
+/* キャッシング用 */
+#cashing{
+  /* ばれないように小さく */
+  font-size: 10px;
+}
